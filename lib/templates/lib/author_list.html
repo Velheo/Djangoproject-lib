@@ -1,0 +1,14 @@
+{% extends 'lib/base.html'  %}
+{% load static %}
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %}
+<h1>All Authors ({{ authors|length }})</h1>
+
+{% for author in authors %}
+<a href="{{ author.get_absolute_url }}" class="text-decoration-none">{{ author }} (books: {{ author.book_set.all|length }})</a>
+<br>
+{% endfor %}
+
+{% endblock %}

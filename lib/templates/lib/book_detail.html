@@ -1,0 +1,32 @@
+{% extends 'lib/base.html'  %}
+{% block title %}{{ book }} by {{ book.author }}{% endblock %}
+
+{% block content %}
+<h1>{{ book }} by
+    <a href="{{ book.author.get_absolute_url }}" class="text-decoration-none">{{ book.author }}</a>
+</h1>
+<div class="row">
+<div class="col-2">
+    <img src="{{ book.img }}" class="img-fluid">
+    <hr>
+    <h6>Instances of {{ book }}:</h6>
+    {% for fi in book.bookinstance_set.all %}
+    <p>id: {{ fi.id }} status: "{{ fi.get_status_display }}"
+    {% if fi.status == 'o' %}
+        (will be returned at {{ fi.due_back|date:'d.m.Y' }})
+    {% endif %}
+    </p>
+    {% endfor %}
+</div>
+<div class="col-2">
+    <h4>genres:</h4>
+    {% for genre in book.genre.all %}
+    <a href="{{ genre.get_absolut_url }}"> <p>{{ genre }}</p></a>
+    {% endfor %}
+</div>
+<div class="col-8">
+    <h4>Summary:</h4>
+    <p>{{ book.summary }}</p>
+</div>
+</div>
+{% endblock %}

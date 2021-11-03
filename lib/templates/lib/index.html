@@ -1,0 +1,27 @@
+{% extends 'lib/base.html'  %}
+{% load static %}
+
+{% block title %}Library{% endblock %}
+
+{% block content %}
+<h1>Library</h1>
+<div class="row">
+    <div class="col-3">
+        <a href="{% url 'lib:book_list' %}">Books: {{ n_books }}</a>
+    </div>
+    <div class="col-3">
+        <a href="{% url 'lib:author_list' %}">Authors: {{ n_authors }}</a>
+    </div>
+    <div class="col-3">
+        <a href="{% url 'lib:genre_list' %}" >Genres: {{ n_genres }}</a>
+    </div>
+    <div class="col-3">
+        <a href="#">Available Instances: {{ n_av_instances }}</a>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <img class="imj-fluid" src="{% static 'lib/img/book.jpg' %}" width="500">
+    </div>
+</div>
+{% endblock %}

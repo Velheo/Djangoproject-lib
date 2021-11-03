@@ -1,0 +1,16 @@
+{% extends 'lib/base.html'  %}
+{% block title %}{{ genre }}{% endblock %}
+
+{% block content %}
+<h1>Books by genre: {{ genre }}({{ genre.book_set.all|length }})</h1>
+
+<div class="row">
+    {% for book in genre.book_set.all %}
+    <div class="col-3">
+        <img src="{{ book.img }}" width="200" height="300">
+        <h4><a href="{{ book.get_absolute_url }}">{{ book }}</a></h4>
+        <h6><a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></h6>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

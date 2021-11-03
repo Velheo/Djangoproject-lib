@@ -1,0 +1,14 @@
+{% extends 'lib/base.html'  %}
+{% load static %}
+
+{% block title %}All Genres{% endblock %}
+
+{% block content %}
+<h1>All Genres ({{ genres|length }})</h1>
+
+{% for genre in genres %}
+<a href="{{ genre.get_absolut_url }}" class="text-decoration-none">{{ genre }}</a>
+<br>
+{% endfor %}
+
+{% endblock %}
